@@ -30,6 +30,10 @@ class Dog:
     def trick(self):
         """Make the dog do a trick"""
         return f"{self.name} did a trick!"
+    
+    def whine(self):
+        """Make the dog whine"""
+        return f"{self.name}, the {self.age} year old dog is whining."
 
 
 my_dog = Dog("black", "logan", 9, "salmon")
@@ -47,3 +51,11 @@ print(enggy_dog.bark())
 print ()
 
 print(my_dog.trick())
+
+print()
+
+print(my_dog.whine())
+
+print ()
+
+print(enggy_dog.whine())
