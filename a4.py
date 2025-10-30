@@ -9,24 +9,35 @@ class TTTBoard:
         board - a list of '*'s, 'X's & 'O's. 'X's represent moves by player 'X', 'O's
             represent moves by player 'O' and '*'s are spots no one has yet played on
     """
-    def __init__(self, board):
-        self.board = board['*'] * 9
+    def __init__(self):
+        self.board = ['*'] * 9
        
     def __str__(self):
-        return f"{self.board[0]} {self.board [1]} {self.board[2]}\n{self.board[3]} {self.board [4]} {self.board[5]}\n{self.board[6]} {self.board [7]} {self.board[8]}\n"
+        return f"{self.board[0]} {self.board [1]} {self.board[2]}\n{self.board[3]} {self.board [4]} {self.board[5]}\n{self.board[6]} {self.board [7]} {self.board[8]}"
     
     def make_move(self, player, pos):
-        if 0<= pos <= 8 and self.board[pos] == '*':
+        if 0 <= pos <= 8 and self.board[pos] == '*':
             self.board[pos] = player
             return True
         return False
     
     def has_won(self, player):
-        pass 
+        winning_combos = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+
+        for combo in winning_combos:
+            if self.board[combo[0]] == player and self.board[combo[1]] == player and self.board[combo[2]] == player:
+                return True
+        return False
+             
 
 
     def game_over(self):
         return self.has_won("X") or self.has_won("O") or '*' not in self.board
+
+
+    def clear(self):
+        self.board = ['*'] * 9
+
 
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
@@ -105,4 +116,4 @@ if __name__ == "__main__":
     print("All tests passed!")
 
     # uncomment to play!
-    # play_tic_tac_toe()
+    play_tic_tac_toe()
